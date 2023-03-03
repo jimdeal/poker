@@ -73,7 +73,7 @@ class pokerHandTest {
     }
 
     @Test
-    void testGetNumberOfSuitsInHand() {
+    void testGetNumberOfSuitsInHandALL() {
         pokerCard card1 = new pokerCard(pokerCardsOrder.S6,pokerSuit.HEARTS);
         pokerCard card2 = new pokerCard(pokerCardsOrder.T2,pokerSuit.CLUBS);
         pokerCard card3 = new pokerCard(pokerCardsOrder.E,pokerSuit.DIAMONDS);
@@ -90,8 +90,72 @@ class pokerHandTest {
         hand.addCardToHand(card6);
 
         assertTrue(hand.isCardHandFull());
-
         assertEquals(hand.getNumberOfSuitsInHand(), 4);
-
     }
+
+    @Test
+    void testGetNumberOfSuitsInHandThree() {
+        pokerCard card1 = new pokerCard(pokerCardsOrder.S6,pokerSuit.HEARTS);
+        pokerCard card2 = new pokerCard(pokerCardsOrder.T2,pokerSuit.CLUBS);
+        pokerCard card3 = new pokerCard(pokerCardsOrder.E,pokerSuit.DIAMONDS);
+        pokerCard card4 = new pokerCard(pokerCardsOrder.T,pokerSuit.HEARTS);
+        pokerCard card5 = new pokerCard(pokerCardsOrder.K,pokerSuit.HEARTS);
+        pokerCard card6 = new pokerCard(pokerCardsOrder.T3,pokerSuit.HEARTS);
+
+        pokerHand hand = new pokerHand();
+        hand.addCardToHand(card1);
+        hand.addCardToHand(card2);
+        hand.addCardToHand(card3);
+        hand.addCardToHand(card4);
+        hand.addCardToHand(card5);
+        hand.addCardToHand(card6);
+
+        assertTrue(hand.isCardHandFull());
+        assertEquals(hand.getNumberOfSuitsInHand(), 3);
+    }
+
+    @Test
+    void testGetNumberOfSuitsInHandOne() {
+        pokerCard card1 = new pokerCard(pokerCardsOrder.S6,pokerSuit.CLUBS);
+        pokerCard card2 = new pokerCard(pokerCardsOrder.T2,pokerSuit.CLUBS);
+        pokerCard card3 = new pokerCard(pokerCardsOrder.E,pokerSuit.CLUBS);
+        pokerCard card4 = new pokerCard(pokerCardsOrder.T,pokerSuit.CLUBS);
+        pokerCard card5 = new pokerCard(pokerCardsOrder.K,pokerSuit.CLUBS);
+        pokerCard card6 = new pokerCard(pokerCardsOrder.T3,pokerSuit.CLUBS);
+
+        pokerHand hand = new pokerHand();
+        hand.addCardToHand(card1);
+        hand.addCardToHand(card2);
+        hand.addCardToHand(card3);
+        hand.addCardToHand(card4);
+        hand.addCardToHand(card5);
+        hand.addCardToHand(card6);
+
+        assertTrue(hand.isCardHandFull());
+        assertEquals(hand.getNumberOfSuitsInHand(), 1);
+    }
+
+    @Test
+    void testGetSuitWithHighestNumberOfCardsInHand() {
+        pokerCard card1 = new pokerCard(pokerCardsOrder.S6,pokerSuit.HEARTS);
+        pokerCard card2 = new pokerCard(pokerCardsOrder.T2,pokerSuit.CLUBS);
+        pokerCard card3 = new pokerCard(pokerCardsOrder.E,pokerSuit.DIAMONDS);
+        pokerCard card4 = new pokerCard(pokerCardsOrder.T,pokerSuit.HEARTS);
+        pokerCard card5 = new pokerCard(pokerCardsOrder.K,pokerSuit.HEARTS);
+        pokerCard card6 = new pokerCard(pokerCardsOrder.T3,pokerSuit.HEARTS);
+
+        pokerHand hand = new pokerHand();
+        hand.addCardToHand(card1);
+        hand.addCardToHand(card2);
+        hand.addCardToHand(card3);
+        hand.addCardToHand(card4);
+        hand.addCardToHand(card5);
+        hand.addCardToHand(card6);
+
+        assertTrue(hand.isCardHandFull());
+        assertEquals(hand.getSuitWithHighestNumberOfCards(), pokerSuit.HEARTS);
+    }
+
+
+
 }

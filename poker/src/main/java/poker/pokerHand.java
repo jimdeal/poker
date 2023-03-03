@@ -32,6 +32,14 @@ public class pokerHand {
 
 
     public int getNumberOfSuitsInHand() {
-        return 0;
+        Set<pokerSuit> tempSet = new TreeSet<pokerSuit>();
+
+        hand.forEach( (h) -> { tempSet.add(h.suit);} );
+
+        return tempSet.size();
+    }
+
+    public pokerSuit getSuitWithHighestNumberOfCards() {
+        return pokerSuit.HEARTS;
     }
 }

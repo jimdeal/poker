@@ -1,6 +1,6 @@
 package poker;
 
-public class pokerCard {
+public class pokerCard implements Comparable<pokerCard>{
     public pokerCardsOrder number;
     public pokerSuit suit;
 
@@ -10,5 +10,11 @@ public class pokerCard {
         this.number = number;
         this.suit = suit;
     }
+
+    @Override
+    public int compareTo(poker.pokerCard o) {
+        return number.compareTo(o.number);
+    }
+
 
 }

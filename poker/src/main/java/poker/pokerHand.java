@@ -4,7 +4,9 @@ import java.util.*;
 
 public class pokerHand {
 
-    private Set<pokerCard> hand = new TreeSet<>();
+
+    private Set<pokerCard> hand = new TreeSet<pokerCard>();
+    private  HashMap<pokerSuit, Integer> handBySuite = new HashMap<pokerSuit, Integer>();
 
     public pokerHand(){}
     private pokerHand(Set<pokerCard> hand){};
@@ -12,6 +14,12 @@ public class pokerHand {
 
     public void addCardToHand(pokerCard card){
         hand.add(card);
+        if(!handBySuite.containsKey(card.suit)){
+            handBySuite.put(card.suit,1);
+        } else {
+            Integer count = handBySuite.get(card.suit);
+            handBySuite.put(card.suit,++count);
+        }
     }
 
     public Set<pokerCard> getHand() {
@@ -33,13 +41,13 @@ public class pokerHand {
 
     public int getNumberOfSuitsInHand() {
         Set<pokerSuit> tempSet = new TreeSet<pokerSuit>();
-
         hand.forEach( (h) -> { tempSet.add(h.suit);} );
-
         return tempSet.size();
     }
 
-    public pokerSuit getSuitWithHighestNumberOfCards() {
-        return pokerSuit.HEARTS;
+    public HashMap<pokerSuit, Integer> getNumberOfCardsInSuits() {
+        return handBySuite;
     }
+
+
 }

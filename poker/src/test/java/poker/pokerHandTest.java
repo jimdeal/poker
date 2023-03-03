@@ -2,6 +2,9 @@ package poker;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
+import java.util.Set;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class pokerHandTest {
@@ -136,7 +139,7 @@ class pokerHandTest {
     }
 
     @Test
-    void testGetSuitWithHighestNumberOfCardsInHand() {
+    void testGetSuitWithHighestNumberOfCardsInHandFour() {
         pokerCard card1 = new pokerCard(pokerCardsOrder.S6,pokerSuit.HEARTS);
         pokerCard card2 = new pokerCard(pokerCardsOrder.T2,pokerSuit.CLUBS);
         pokerCard card3 = new pokerCard(pokerCardsOrder.E,pokerSuit.DIAMONDS);
@@ -153,9 +156,40 @@ class pokerHandTest {
         hand.addCardToHand(card6);
 
         assertTrue(hand.isCardHandFull());
-        assertEquals(hand.getSuitWithHighestNumberOfCards(), pokerSuit.HEARTS);
+        HashMap<pokerSuit, Integer> suits = hand.getNumberOfCardsInSuits();
+        int numberOfHearts = suits.get(pokerSuit.HEARTS);
+        assertEquals(numberOfHearts,4);
     }
 
+    @Test
+    void testGetSuitWithHighestNumberOfCardsInHandTwo() {
+        pokerCard card1 = new pokerCard(pokerCardsOrder.S6,pokerSuit.HEARTS);
+        pokerCard card2 = new pokerCard(pokerCardsOrder.T2,pokerSuit.CLUBS);
+        pokerCard card3 = new pokerCard(pokerCardsOrder.E,pokerSuit.DIAMONDS);
+        pokerCard card4 = new pokerCard(pokerCardsOrder.T,pokerSuit.SPADES);
+        pokerCard card5 = new pokerCard(pokerCardsOrder.K,pokerSuit.CLUBS);
+        pokerCard card6 = new pokerCard(pokerCardsOrder.T3,pokerSuit.HEARTS);
+
+        pokerHand hand = new pokerHand();
+        hand.addCardToHand(card1);
+        hand.addCardToHand(card2);
+        hand.addCardToHand(card3);
+        hand.addCardToHand(card4);
+        hand.addCardToHand(card5);
+        hand.addCardToHand(card6);
+
+        assertTrue(hand.isCardHandFull());
+        HashMap<pokerSuit, Integer> suits = hand.getNumberOfCardsInSuits();
+        int numberOfHearts = suits.get(pokerSuit.HEARTS);
+        assertEquals(numberOfHearts,2);
+        int numberOfClubs = suits.get(pokerSuit.CLUBS);
+        assertEquals(numberOfClubs,2);
+    }
+
+
+    @Test
+    void testRankHandOneSuite1() {
+    }
 
 
 }

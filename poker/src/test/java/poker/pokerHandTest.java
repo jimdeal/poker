@@ -352,5 +352,25 @@ class pokerHandTest {
         assertEquals(pokerCardsOrder.S6, hand.getHandResult().firstHighVal);
     }
 
+    @Test
+    void testRankHandForHighHand() {
+        pokerCard card1 = new pokerCard(pokerCardsOrder.T2, pokerSuit.HEARTS);
+        pokerCard card2 = new pokerCard(pokerCardsOrder.F4, pokerSuit.SPADES);
+        pokerCard card3 = new pokerCard(pokerCardsOrder.F5, pokerSuit.CLUBS);
+        pokerCard card4 = new pokerCard(pokerCardsOrder.S7, pokerSuit.HEARTS);
+        pokerCard card5 = new pokerCard(pokerCardsOrder.N, pokerSuit.DIAMONDS);
+
+        pokerHand hand = new pokerHand();
+        hand.addCardToHand(card1);
+        hand.addCardToHand(card2);
+        hand.addCardToHand(card3);
+        hand.addCardToHand(card4);
+        hand.addCardToHand(card5);
+
+        assertTrue(hand.isCardHandFull());
+        hand.processHand();
+
+        assertEquals(pokerHands.HIGH_CARD, hand.getHandResult().handName);
+    }
 
 }

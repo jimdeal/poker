@@ -202,8 +202,9 @@ public class pokerHand {
         if(checkContinuousCards()){
             handRank.handName = pokerHands.STRAIGHT;
             handRank.firstHighVal = hand.stream().toList().get(0).number;
+        } else {
+            handRank.handName = pokerHands.HIGH_CARD;
         }
-
     }
 
 

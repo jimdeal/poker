@@ -64,19 +64,23 @@ public class pokerHand {
 
     public void processHand(){
         int numberOfSuitsInHand = this.getNumberOfSuitsInHand();
-
+        boolean handHasBeenSet= false;
         switch (numberOfSuitsInHand){
-            case 1: processOneSuite();
+            case 1: handHasBeenSet = processOneSuite();
                 break;
-            case 2: processTwoSuites();
+            case 2: handHasBeenSet = processTwoSuites();
                 break;
-            case 3: processThreeSuites();
+            case 3: handHasBeenSet = processThreeSuites();
                 break;
+            case 4: handHasBeenSet = processFourSuites();
             default:
                 break;
         }
-    }
+        if(!handHasBeenSet){
+            checkIsHandStraight();
+        }
 
+    }
 
 
     public pokerHandResult getHandResult(){
@@ -98,20 +102,22 @@ public class pokerHand {
         return oneDifference;
     }
 
-    private void processOneSuite() {
+    private boolean processOneSuite() {
+        boolean handHasBeenSet= false;
         if(this.checkContinuousCards()){
             handRank.handName = pokerHands.STRAIGHT_FLUSH;
+            handHasBeenSet = true;
         } else{
             handRank.handName = pokerHands.FLUSH;
+            handHasBeenSet = true;
         }
         handRank.firstHighVal = hand.stream().toList().get(0).number;
-        for(int r = 1; r < MAX_NUM_CARDS;r++){
-            pokerCardsOrder order = hand.stream().toList().get(r).number;
-            handRank.remainingValue[r-1] = order;
-        }
+        this.sortHandResults();
+        return handHasBeenSet;
     }
 
-    private void processTwoSuites() {
+    private boolean processTwoSuites() {
+        boolean handHasBeenSet= false;
         int numPairs = 0;
 
         Set<pokerCardsOrder> keySet = pokerVals.descendingKeySet();
@@ -122,21 +128,23 @@ public class pokerHand {
                     handRank.handName = pokerHands.PAIR;
                     handRank.firstHighVal = key;
                     numPairs++;
+                    handHasBeenSet = true;
                 } else if (numPairs == 1) {
                     handRank.handName = pokerHands.TWO_PAIRS;
                     handRank.secondHighVal = key;
+                    handHasBeenSet = true;
                 } else {
                     //
                 }
             }
         }
-        for(int r = 1; r < MAX_NUM_CARDS;r++){
-            pokerCardsOrder order = hand.stream().toList().get(r).number;
-            handRank.remainingValue[r-1] = order;
-        }
+        this.sortHandResults();
+        return handHasBeenSet;
     }
 
-    private void processThreeSuites() {
+    private boolean processThreeSuites() {
+        boolean handHasBeenSet= false;
+
         if(pokerVals.size()==2){
             handRank.handName = pokerHands.FULL_HOUSE;
             Set<pokerCardsOrder> keySet = pokerVals.descendingKeySet();
@@ -148,6 +156,7 @@ public class pokerHand {
                     handRank.secondHighVal = key;
                 }
             }
+            handHasBeenSet = true;
 
         } else {
             handRank.handName = pokerHands.THREE_OF_A_KIND;
@@ -158,11 +167,43 @@ public class pokerHand {
                     handRank.firstHighVal = key;
                 }
             }
+            handHasBeenSet = true;
         }
+        this.sortHandResults();
+        return handHasBeenSet;
+    }
+
+    private boolean processFourSuites() {
+        boolean handHasBeenSet= false;
+
+        if(pokerVals.size()==2){
+            handRank.handName = pokerHands.FOUR_OF_A_KIND;
+            Set<pokerCardsOrder> keySet = pokerVals.descendingKeySet();
+            for (pokerCardsOrder key : keySet) {
+                int numVals = pokerVals.get(key);
+                if(numVals == 4){
+                    handRank.firstHighVal = key;
+                }
+            }
+            handHasBeenSet = true;
+        }
+        this.sortHandResults();
+        return handHasBeenSet;
+    }
+
+    private void sortHandResults(){
         for(int r = 1; r < MAX_NUM_CARDS;r++){
             pokerCardsOrder order = hand.stream().toList().get(r).number;
             handRank.remainingValue[r-1] = order;
         }
+    }
+
+    private void checkIsHandStraight() {
+        if(checkContinuousCards()){
+            handRank.handName = pokerHands.STRAIGHT;
+            handRank.firstHighVal = hand.stream().toList().get(0).number;
+        }
+
     }
 
 

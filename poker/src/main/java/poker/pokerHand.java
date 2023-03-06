@@ -6,9 +6,12 @@ public class pokerHand {
     private final int MAX_NUM_CARDS = 5;
     private final int LOWER_RANGE = 4;
 
-    private Set<pokerCard> hand = new TreeSet<pokerCard>();
+    private ArrayList<pokerCard> hand = new ArrayList<pokerCard>();
     private  HashMap<pokerSuit, Integer> handBySuite = new HashMap<pokerSuit, Integer>();
     private pokerHandResult  handRank = new pokerHandResult();
+    private  TreeMap<pokerCardsOrder, Integer> pokerVals =
+            new TreeMap<pokerCardsOrder, Integer>(Comparator.reverseOrder());
+
 
     public pokerHand(){}
     private pokerHand(Set<pokerCard> hand){};
@@ -16,15 +19,23 @@ public class pokerHand {
 
     public void addCardToHand(pokerCard card){
         hand.add(card);
+        Collections.sort(hand);
         if(!handBySuite.containsKey(card.suit)){
             handBySuite.put(card.suit,1);
         } else {
             Integer count = handBySuite.get(card.suit);
             handBySuite.put(card.suit,++count);
         }
+        if(!pokerVals.containsKey(card.number))
+        {
+            pokerVals.put(card.number,1);
+        } else{
+            Integer count = pokerVals.get(card.number);
+            pokerVals.put(card.number,++count);
+        }
     }
 
-    public Set<pokerCard> getHand() {
+    public ArrayList<pokerCard> getHand() {
         return hand;
     }
 
@@ -57,16 +68,22 @@ public class pokerHand {
         switch (numberOfSuitsInHand){
             case 1: processOneSuite();
                 break;
+            case 2: processTwoSuites();
+                break;
+            case 3: processThreeSuites();
+                break;
             default:
                 break;
         }
     }
 
+
+
     public pokerHandResult getHandResult(){
         return this.handRank;
     }
 
-    public boolean checkContinuousCards(){
+    private boolean checkContinuousCards(){
         boolean oneDifference = true;
 
         for(int c = 0; c < LOWER_RANGE; c++){
@@ -93,4 +110,61 @@ public class pokerHand {
             handRank.remainingValue[r-1] = order;
         }
     }
+
+    private void processTwoSuites() {
+        int numPairs = 0;
+
+        Set<pokerCardsOrder> keySet = pokerVals.descendingKeySet();
+        for (pokerCardsOrder key : keySet) {
+            int numVals = pokerVals.get(key);
+            if(numVals == 2) {
+                if (numPairs == 0) {
+                    handRank.handName = pokerHands.PAIR;
+                    handRank.firstHighVal = key;
+                    numPairs++;
+                } else if (numPairs == 1) {
+                    handRank.handName = pokerHands.TWO_PAIRS;
+                    handRank.secondHighVal = key;
+                } else {
+                    //
+                }
+            }
+        }
+        for(int r = 1; r < MAX_NUM_CARDS;r++){
+            pokerCardsOrder order = hand.stream().toList().get(r).number;
+            handRank.remainingValue[r-1] = order;
+        }
+    }
+
+    private void processThreeSuites() {
+        if(pokerVals.size()==2){
+            handRank.handName = pokerHands.FULL_HOUSE;
+            Set<pokerCardsOrder> keySet = pokerVals.descendingKeySet();
+            for (pokerCardsOrder key : keySet) {
+                int numVals = pokerVals.get(key);
+                if(numVals == 3){
+                    handRank.firstHighVal = key;
+                } else {
+                    handRank.secondHighVal = key;
+                }
+            }
+
+        } else {
+            handRank.handName = pokerHands.THREE_OF_A_KIND;
+            Set<pokerCardsOrder> keySet = pokerVals.descendingKeySet();
+            for (pokerCardsOrder key : keySet) {
+                int numVals = pokerVals.get(key);
+                if (numVals == 3) {
+                    handRank.firstHighVal = key;
+                }
+            }
+        }
+        for(int r = 1; r < MAX_NUM_CARDS;r++){
+            pokerCardsOrder order = hand.stream().toList().get(r).number;
+            handRank.remainingValue[r-1] = order;
+        }
+    }
+
+
 }
+

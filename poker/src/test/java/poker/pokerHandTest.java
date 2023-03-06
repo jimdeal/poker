@@ -219,14 +219,99 @@ class pokerHandTest {
     }
 
     @Test
-    void testRankHandTwoSuiteTwoPair() {
+    void testRankHandTwoSuiteOnePair() {
+            pokerCard card2 = new pokerCard(pokerCardsOrder.T2,pokerSuit.CLUBS);
+            pokerCard card1 = new pokerCard(pokerCardsOrder.T2,pokerSuit.HEARTS);
+            pokerCard card3 = new pokerCard(pokerCardsOrder.F5,pokerSuit.CLUBS);
+            pokerCard card4 = new pokerCard(pokerCardsOrder.S6,pokerSuit.CLUBS);
+            pokerCard card5 = new pokerCard(pokerCardsOrder.E,pokerSuit.CLUBS);
 
+            pokerHand hand = new pokerHand();
+            hand.addCardToHand(card1);
+            hand.addCardToHand(card2);
+            hand.addCardToHand(card3);
+            hand.addCardToHand(card4);
+            hand.addCardToHand(card5);
+
+            assertTrue(hand.isCardHandFull());
+            hand.processHand();
+            assertEquals(pokerHands.PAIR, hand.getHandResult().handName);
+            assertEquals(pokerCardsOrder.T2,hand.getHandResult().firstHighVal);
     }
 
     @Test
-    void testRankHandTwoSuiteOnePair() {
+    void testRankHandTwoSuiteTwoPair() {
+        pokerCard card1 = new pokerCard(pokerCardsOrder.T2,pokerSuit.HEARTS);
+        pokerCard card2 = new pokerCard(pokerCardsOrder.T2,pokerSuit.CLUBS);
+        pokerCard card3 = new pokerCard(pokerCardsOrder.F5,pokerSuit.CLUBS);
+        pokerCard card4 = new pokerCard(pokerCardsOrder.F5,pokerSuit.HEARTS);
+        pokerCard card5 = new pokerCard(pokerCardsOrder.E,pokerSuit.CLUBS);
 
+        pokerHand hand = new pokerHand();
+        hand.addCardToHand(card1);
+        hand.addCardToHand(card2);
+        hand.addCardToHand(card3);
+        hand.addCardToHand(card4);
+        hand.addCardToHand(card5);
+
+        assertTrue(hand.isCardHandFull());
+        hand.processHand();
+        pokerHandResult result = hand.getHandResult();
+
+        assertEquals(pokerHands.TWO_PAIRS, hand.getHandResult().handName);
+        assertEquals(pokerCardsOrder.F5,hand.getHandResult().firstHighVal);
+        assertEquals(pokerCardsOrder.T2,hand.getHandResult().secondHighVal);
     }
 
+    @Test
+    void testRankHandTwoAndThree() {
+        pokerCard card1 = new pokerCard(pokerCardsOrder.T2,pokerSuit.HEARTS);
+        pokerCard card2 = new pokerCard(pokerCardsOrder.T2,pokerSuit.CLUBS);
+        pokerCard card3 = new pokerCard(pokerCardsOrder.F5,pokerSuit.CLUBS);
+        pokerCard card4 = new pokerCard(pokerCardsOrder.F5,pokerSuit.HEARTS);
+        pokerCard card5 = new pokerCard(pokerCardsOrder.F5,pokerSuit.DIAMONDS);
 
-}
+        pokerHand hand = new pokerHand();
+        hand.addCardToHand(card1);
+        hand.addCardToHand(card2);
+        hand.addCardToHand(card3);
+        hand.addCardToHand(card4);
+        hand.addCardToHand(card5);
+
+        assertTrue(hand.isCardHandFull());
+        hand.processHand();
+        pokerHandResult result = hand.getHandResult();
+
+        assertEquals(pokerHands.FULL_HOUSE, hand.getHandResult().handName);
+        assertEquals(pokerCardsOrder.F5,hand.getHandResult().firstHighVal);
+        assertEquals(pokerCardsOrder.T2,hand.getHandResult().secondHighVal);
+    }
+
+    @Test
+    void testRankHandThreeSuite() {
+        pokerCard card1 = new pokerCard(pokerCardsOrder.T2,pokerSuit.HEARTS);
+        pokerCard card2 = new pokerCard(pokerCardsOrder.E,pokerSuit.CLUBS);
+        pokerCard card3 = new pokerCard(pokerCardsOrder.F5,pokerSuit.CLUBS);
+        pokerCard card4 = new pokerCard(pokerCardsOrder.F5,pokerSuit.HEARTS);
+        pokerCard card5 = new pokerCard(pokerCardsOrder.F5,pokerSuit.DIAMONDS);
+
+        pokerHand hand = new pokerHand();
+        hand.addCardToHand(card1);
+        hand.addCardToHand(card2);
+        hand.addCardToHand(card3);
+        hand.addCardToHand(card4);
+        hand.addCardToHand(card5);
+
+        assertTrue(hand.isCardHandFull());
+        hand.processHand();
+        pokerHandResult result = hand.getHandResult();
+
+        assertEquals(pokerHands.THREE_OF_A_KIND, hand.getHandResult().handName);
+        assertEquals(pokerCardsOrder.F5,hand.getHandResult().firstHighVal);
+    }
+
+    @Test
+    void testRankHandFourSuite() {
+
+
+    }

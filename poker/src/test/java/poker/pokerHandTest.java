@@ -373,4 +373,14 @@ class pokerHandTest {
         assertEquals(pokerHands.HIGH_CARD, hand.getHandResult().handName);
     }
 
+    @Test
+    void testGameStraightFlush() {
+    }
+
+    @Test
+    void testGameFlush() {
+    }
+
+
+
 }

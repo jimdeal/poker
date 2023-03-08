@@ -12,8 +12,17 @@ public class pokerHand {
     private  TreeMap<pokerCardsOrder, Integer> pokerVals =
             new TreeMap<pokerCardsOrder, Integer>(Comparator.reverseOrder());
 
+    private String playerName;
 
-    public pokerHand(){}
+    public String getPlayerName(){
+        return this.playerName;
+    }
+
+    public pokerHand(String playerName){
+        this.playerName = playerName;
+    }
+
+    private pokerHand(){};
     private pokerHand(Set<pokerCard> hand){};
     private pokerHand(pokerCardsOrder number, pokerSuit suit){};
 
@@ -63,6 +72,7 @@ public class pokerHand {
 
 
     public void processHand(){
+        this.handRank.playerName = this.playerName;
         int numberOfSuitsInHand = this.getNumberOfSuitsInHand();
         boolean handHasBeenSet= false;
         switch (numberOfSuitsInHand){

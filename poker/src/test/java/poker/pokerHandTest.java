@@ -17,7 +17,7 @@ class pokerHandTest {
         pokerCard card4 = new pokerCard(pokerCardsOrder.N, pokerSuit.HEARTS);
         pokerCard card5 = new pokerCard(pokerCardsOrder.A, pokerSuit.HEARTS);
 
-        pokerHand hand = new pokerHand();
+        pokerHand hand = new pokerHand("fred");
         hand.addCardToHand(card1);
         hand.addCardToHand(card2);
         hand.addCardToHand(card3);
@@ -39,7 +39,7 @@ class pokerHandTest {
         pokerCard card4 = new pokerCard(pokerCardsOrder.T, pokerSuit.HEARTS);
         pokerCard card5 = new pokerCard(pokerCardsOrder.K, pokerSuit.SPADES);
 
-        pokerHand hand = new pokerHand();
+        pokerHand hand = new pokerHand("fred");
         hand.addCardToHand(card1);
         hand.addCardToHand(card2);
         hand.addCardToHand(card3);
@@ -61,7 +61,7 @@ class pokerHandTest {
         pokerCard card3 = new pokerCard(pokerCardsOrder.E, pokerSuit.DIAMONDS);
         pokerCard card4 = new pokerCard(pokerCardsOrder.T, pokerSuit.HEARTS);
 
-        pokerHand hand = new pokerHand();
+        pokerHand hand = new pokerHand("fred");
         hand.addCardToHand(card1);
         hand.addCardToHand(card2);
         hand.addCardToHand(card3);
@@ -78,7 +78,7 @@ class pokerHandTest {
         pokerCard card4 = new pokerCard(pokerCardsOrder.T, pokerSuit.HEARTS);
         pokerCard card5 = new pokerCard(pokerCardsOrder.K, pokerSuit.SPADES);
 
-        pokerHand hand = new pokerHand();
+        pokerHand hand = new pokerHand("fred");
         hand.addCardToHand(card1);
         hand.addCardToHand(card2);
         hand.addCardToHand(card3);
@@ -97,7 +97,7 @@ class pokerHandTest {
         pokerCard card4 = new pokerCard(pokerCardsOrder.T, pokerSuit.HEARTS);
         pokerCard card5 = new pokerCard(pokerCardsOrder.K, pokerSuit.HEARTS);
 
-        pokerHand hand = new pokerHand();
+        pokerHand hand = new pokerHand("fred");
         hand.addCardToHand(card1);
         hand.addCardToHand(card2);
         hand.addCardToHand(card3);
@@ -116,7 +116,7 @@ class pokerHandTest {
         pokerCard card4 = new pokerCard(pokerCardsOrder.T, pokerSuit.CLUBS);
         pokerCard card5 = new pokerCard(pokerCardsOrder.K, pokerSuit.CLUBS);
 
-        pokerHand hand = new pokerHand();
+        pokerHand hand = new pokerHand("fred");
         hand.addCardToHand(card1);
         hand.addCardToHand(card2);
         hand.addCardToHand(card3);
@@ -135,7 +135,7 @@ class pokerHandTest {
         pokerCard card4 = new pokerCard(pokerCardsOrder.T, pokerSuit.HEARTS);
         pokerCard card5 = new pokerCard(pokerCardsOrder.K, pokerSuit.HEARTS);
 
-        pokerHand hand = new pokerHand();
+        pokerHand hand = new pokerHand("fred");
         hand.addCardToHand(card1);
         hand.addCardToHand(card2);
         hand.addCardToHand(card3);
@@ -156,7 +156,7 @@ class pokerHandTest {
         pokerCard card4 = new pokerCard(pokerCardsOrder.T, pokerSuit.HEARTS);
         pokerCard card5 = new pokerCard(pokerCardsOrder.K, pokerSuit.CLUBS);
 
-        pokerHand hand = new pokerHand();
+        pokerHand hand = new pokerHand("fred");
         hand.addCardToHand(card1);
         hand.addCardToHand(card2);
         hand.addCardToHand(card3);
@@ -180,7 +180,7 @@ class pokerHandTest {
         pokerCard card3 = new pokerCard(pokerCardsOrder.F5, pokerSuit.CLUBS);
         pokerCard card1 = new pokerCard(pokerCardsOrder.F4, pokerSuit.CLUBS);
 
-        pokerHand hand = new pokerHand();
+        pokerHand hand = new pokerHand("fred");
         hand.addCardToHand(card1);
         hand.addCardToHand(card2);
         hand.addCardToHand(card3);
@@ -203,7 +203,7 @@ class pokerHandTest {
         pokerCard card4 = new pokerCard(pokerCardsOrder.S6, pokerSuit.CLUBS);
         pokerCard card5 = new pokerCard(pokerCardsOrder.E, pokerSuit.CLUBS);
 
-        pokerHand hand = new pokerHand();
+        pokerHand hand = new pokerHand("fred");
         hand.addCardToHand(card1);
         hand.addCardToHand(card2);
         hand.addCardToHand(card3);
@@ -226,7 +226,7 @@ class pokerHandTest {
         pokerCard card4 = new pokerCard(pokerCardsOrder.S6, pokerSuit.CLUBS);
         pokerCard card5 = new pokerCard(pokerCardsOrder.E, pokerSuit.CLUBS);
 
-        pokerHand hand = new pokerHand();
+        pokerHand hand = new pokerHand("fred");
         hand.addCardToHand(card1);
         hand.addCardToHand(card2);
         hand.addCardToHand(card3);
@@ -247,7 +247,7 @@ class pokerHandTest {
         pokerCard card4 = new pokerCard(pokerCardsOrder.F5, pokerSuit.HEARTS);
         pokerCard card5 = new pokerCard(pokerCardsOrder.E, pokerSuit.CLUBS);
 
-        pokerHand hand = new pokerHand();
+        pokerHand hand = new pokerHand("fred");
         hand.addCardToHand(card1);
         hand.addCardToHand(card2);
         hand.addCardToHand(card3);
@@ -271,7 +271,7 @@ class pokerHandTest {
         pokerCard card4 = new pokerCard(pokerCardsOrder.F5, pokerSuit.HEARTS);
         pokerCard card5 = new pokerCard(pokerCardsOrder.F5, pokerSuit.DIAMONDS);
 
-        pokerHand hand = new pokerHand();
+        pokerHand hand = new pokerHand("fred");
         hand.addCardToHand(card1);
         hand.addCardToHand(card2);
         hand.addCardToHand(card3);
@@ -294,7 +294,7 @@ class pokerHandTest {
         pokerCard card4 = new pokerCard(pokerCardsOrder.F5, pokerSuit.HEARTS);
         pokerCard card5 = new pokerCard(pokerCardsOrder.F5, pokerSuit.DIAMONDS);
 
-        pokerHand hand = new pokerHand();
+        pokerHand hand = new pokerHand("fred");
         hand.addCardToHand(card1);
         hand.addCardToHand(card2);
         hand.addCardToHand(card3);
@@ -316,7 +316,7 @@ class pokerHandTest {
         pokerCard card4 = new pokerCard(pokerCardsOrder.F5, pokerSuit.HEARTS);
         pokerCard card5 = new pokerCard(pokerCardsOrder.F5, pokerSuit.DIAMONDS);
 
-        pokerHand hand = new pokerHand();
+        pokerHand hand = new pokerHand("fred");
         hand.addCardToHand(card1);
         hand.addCardToHand(card2);
         hand.addCardToHand(card3);
@@ -338,7 +338,7 @@ class pokerHandTest {
         pokerCard card4 = new pokerCard(pokerCardsOrder.F5, pokerSuit.HEARTS);
         pokerCard card5 = new pokerCard(pokerCardsOrder.S6, pokerSuit.DIAMONDS);
 
-        pokerHand hand = new pokerHand();
+        pokerHand hand = new pokerHand("fred");
         hand.addCardToHand(card1);
         hand.addCardToHand(card2);
         hand.addCardToHand(card3);
@@ -360,7 +360,7 @@ class pokerHandTest {
         pokerCard card4 = new pokerCard(pokerCardsOrder.S7, pokerSuit.HEARTS);
         pokerCard card5 = new pokerCard(pokerCardsOrder.N, pokerSuit.DIAMONDS);
 
-        pokerHand hand = new pokerHand();
+        pokerHand hand = new pokerHand("fred");
         hand.addCardToHand(card1);
         hand.addCardToHand(card2);
         hand.addCardToHand(card3);
@@ -374,7 +374,153 @@ class pokerHandTest {
     }
 
     @Test
-    void testGameStraightFlush() {
+    void testGameStraightFlushPlayer2Win() {
+        pokerCard card14 = new pokerCard(pokerCardsOrder.S6, pokerSuit.CLUBS);
+        pokerCard card12 = new pokerCard(pokerCardsOrder.T2, pokerSuit.CLUBS);
+        pokerCard card15 = new pokerCard(pokerCardsOrder.T3, pokerSuit.CLUBS);
+        pokerCard card13 = new pokerCard(pokerCardsOrder.F5, pokerSuit.CLUBS);
+        pokerCard card11 = new pokerCard(pokerCardsOrder.F4, pokerSuit.CLUBS);
+
+        pokerHand hand1 = new pokerHand("fred");
+        hand1.addCardToHand(card11);
+        hand1.addCardToHand(card12);
+        hand1.addCardToHand(card13);
+        hand1.addCardToHand(card14);
+        hand1.addCardToHand(card15);
+
+        assertTrue(hand1.isCardHandFull());
+        assertEquals(hand1.getNumberOfSuitsInHand(), 1);
+
+        hand1.processHand();
+        assertEquals(pokerHands.STRAIGHT_FLUSH, hand1.getHandResult().handName);
+        assertEquals(pokerCardsOrder.S6, hand1.getHandResult().firstHighVal);
+
+
+        pokerCard card22 = new pokerCard(pokerCardsOrder.T2, pokerSuit.CLUBS);
+        pokerCard card21 = new pokerCard(pokerCardsOrder.F4, pokerSuit.CLUBS);
+        pokerCard card23 = new pokerCard(pokerCardsOrder.F5, pokerSuit.CLUBS);
+        pokerCard card24 = new pokerCard(pokerCardsOrder.S6, pokerSuit.CLUBS);
+        pokerCard card25 = new pokerCard(pokerCardsOrder.E, pokerSuit.CLUBS);
+
+        pokerHand hand2 = new pokerHand("fred");
+        hand2.addCardToHand(card21);
+        hand2.addCardToHand(card22);
+        hand2.addCardToHand(card23);
+        hand2.addCardToHand(card24);
+        hand2.addCardToHand(card25);
+
+        assertTrue(hand2.isCardHandFull());
+        assertEquals(hand2.getNumberOfSuitsInHand(), 1);
+
+        hand2.processHand();
+        assertEquals(pokerHands.FLUSH, hand2.getHandResult().handName);
+        assertEquals(pokerCardsOrder.E, hand2.getHandResult().firstHighVal);
+
+        pokerTwoPlayerGame game = new pokerTwoPlayerGame();
+
+        pokerHandResult winner = game.scoreGame(hand1,hand2);
+        assertTrue(winner.playerName.equals(hand2.getPlayerName()));
+
+    }
+
+    @Test
+    void testGameStraightFlushPlayer1Win() {
+        pokerCard card12 = new pokerCard(pokerCardsOrder.T2, pokerSuit.CLUBS);
+        pokerCard card11 = new pokerCard(pokerCardsOrder.F4, pokerSuit.CLUBS);
+        pokerCard card13 = new pokerCard(pokerCardsOrder.F5, pokerSuit.CLUBS);
+        pokerCard card14 = new pokerCard(pokerCardsOrder.S6, pokerSuit.CLUBS);
+        pokerCard card15 = new pokerCard(pokerCardsOrder.E, pokerSuit.CLUBS);
+
+        pokerHand hand1 = new pokerHand("fred");
+        hand1.addCardToHand(card11);
+        hand1.addCardToHand(card12);
+        hand1.addCardToHand(card13);
+        hand1.addCardToHand(card14);
+        hand1.addCardToHand(card15);
+
+        assertTrue(hand1.isCardHandFull());
+        assertEquals(hand1.getNumberOfSuitsInHand(), 1);
+
+        hand1.processHand();
+        assertEquals(pokerHands.FLUSH, hand1.getHandResult().handName);
+        assertEquals(pokerCardsOrder.E, hand1.getHandResult().firstHighVal);
+
+
+        pokerCard card24 = new pokerCard(pokerCardsOrder.S6, pokerSuit.CLUBS);
+        pokerCard card22 = new pokerCard(pokerCardsOrder.T2, pokerSuit.CLUBS);
+        pokerCard card25 = new pokerCard(pokerCardsOrder.T3, pokerSuit.CLUBS);
+        pokerCard card23 = new pokerCard(pokerCardsOrder.F5, pokerSuit.CLUBS);
+        pokerCard card21 = new pokerCard(pokerCardsOrder.F4, pokerSuit.CLUBS);
+
+        pokerHand hand2 = new pokerHand("fred");
+        hand2.addCardToHand(card21);
+        hand2.addCardToHand(card22);
+        hand2.addCardToHand(card23);
+        hand2.addCardToHand(card24);
+        hand2.addCardToHand(card25);
+
+        assertTrue(hand2.isCardHandFull());
+        assertEquals(hand2.getNumberOfSuitsInHand(), 1);
+
+        hand2.processHand();
+        assertEquals(pokerHands.STRAIGHT_FLUSH, hand2.getHandResult().handName);
+        assertEquals(pokerCardsOrder.S6, hand2.getHandResult().firstHighVal);
+
+        pokerTwoPlayerGame game = new pokerTwoPlayerGame();
+
+        pokerHandResult winner = game.scoreGame(hand1,hand2);
+        assertTrue(winner.playerName.equals(hand1.getPlayerName()));
+
+    }
+
+    @Test
+    void testGameStraightFlushPlayer1WinTiedTopLevel() {
+        pokerCard card12 = new pokerCard(pokerCardsOrder.S6, pokerSuit.CLUBS);
+        pokerCard card11 = new pokerCard(pokerCardsOrder.S7, pokerSuit.CLUBS);
+        pokerCard card13 = new pokerCard(pokerCardsOrder.E, pokerSuit.CLUBS);
+        pokerCard card14 = new pokerCard(pokerCardsOrder.N, pokerSuit.CLUBS);
+        pokerCard card15 = new pokerCard(pokerCardsOrder.T, pokerSuit.CLUBS);
+
+        pokerHand hand1 = new pokerHand("fred");
+        hand1.addCardToHand(card11);
+        hand1.addCardToHand(card12);
+        hand1.addCardToHand(card13);
+        hand1.addCardToHand(card14);
+        hand1.addCardToHand(card15);
+
+        assertTrue(hand1.isCardHandFull());
+        assertEquals(hand1.getNumberOfSuitsInHand(), 1);
+
+        hand1.processHand();
+        assertEquals(pokerHands.STRAIGHT_FLUSH, hand1.getHandResult().handName);
+        assertEquals(pokerCardsOrder.T, hand1.getHandResult().firstHighVal);
+
+
+        pokerCard card24 = new pokerCard(pokerCardsOrder.S6, pokerSuit.CLUBS);
+        pokerCard card22 = new pokerCard(pokerCardsOrder.T2, pokerSuit.CLUBS);
+        pokerCard card25 = new pokerCard(pokerCardsOrder.T3, pokerSuit.CLUBS);
+        pokerCard card23 = new pokerCard(pokerCardsOrder.F5, pokerSuit.CLUBS);
+        pokerCard card21 = new pokerCard(pokerCardsOrder.F4, pokerSuit.CLUBS);
+
+        pokerHand hand2 = new pokerHand("fred");
+        hand2.addCardToHand(card21);
+        hand2.addCardToHand(card22);
+        hand2.addCardToHand(card23);
+        hand2.addCardToHand(card24);
+        hand2.addCardToHand(card25);
+
+        assertTrue(hand2.isCardHandFull());
+        assertEquals(hand2.getNumberOfSuitsInHand(), 1);
+
+        hand2.processHand();
+        assertEquals(pokerHands.STRAIGHT_FLUSH, hand2.getHandResult().handName);
+        assertEquals(pokerCardsOrder.S6, hand2.getHandResult().firstHighVal);
+
+        pokerTwoPlayerGame game = new pokerTwoPlayerGame();
+
+        pokerHandResult winner = game.scoreGame(hand1,hand2);
+        assertTrue(winner.playerName.equals(hand1.getPlayerName()));
+
     }
 
     @Test

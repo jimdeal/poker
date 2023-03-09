@@ -1,17 +1,19 @@
 package poker;
 
+import java.util.jar.JarEntry;
+
 public enum pokerCardsOrder {
-    A,
-    K,
-    Q,
-    J,
-    T,
-    N,
-    E,
-    S7,
-    S6,
-    F5,
-    F4,
+    T2,
     T3,
-    T2
+    F4,
+    F5,
+    S6,
+    S7,
+    E,
+    N,
+    T,
+    J,
+    Q,
+    K,
+    A
 }

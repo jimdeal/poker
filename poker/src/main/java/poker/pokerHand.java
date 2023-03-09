@@ -55,7 +55,9 @@ public class pokerHand {
     public pokerCard getCard(int cardIndex){
         pokerCard returnedCard = null;
         if(cardIndex>=0 && cardIndex<=MAX_NUM_CARDS){
-            returnedCard = hand.stream().toList().get(cardIndex);
+            ArrayList<pokerCard> temp = new ArrayList<pokerCard>(hand);
+            Collections.reverse(temp);
+            returnedCard = temp.stream().toList().get(cardIndex) ;
         }
         return returnedCard;
     }
@@ -121,7 +123,7 @@ public class pokerHand {
             handRank.handName = pokerHands.FLUSH;
             handHasBeenSet = true;
         }
-        handRank.firstHighVal = hand.stream().toList().get(0).number;
+        handRank.firstHighVal = this.getCard(0).number;
         this.sortHandResults();
         return handHasBeenSet;
     }
@@ -131,7 +133,11 @@ public class pokerHand {
         int numPairs = 0;
 
         Set<pokerCardsOrder> keySet = pokerVals.descendingKeySet();
-        for (pokerCardsOrder key : keySet) {
+
+        List<pokerCardsOrder> temp = new ArrayList<pokerCardsOrder>(keySet.stream().toList());
+        Collections.reverse(temp);
+
+        for (pokerCardsOrder key : temp) {
             int numVals = pokerVals.get(key);
             if(numVals == 2) {
                 if (numPairs == 0) {
@@ -158,7 +164,9 @@ public class pokerHand {
         if(pokerVals.size()==2){
             handRank.handName = pokerHands.FULL_HOUSE;
             Set<pokerCardsOrder> keySet = pokerVals.descendingKeySet();
-            for (pokerCardsOrder key : keySet) {
+            List<pokerCardsOrder> temp = new ArrayList<pokerCardsOrder>(keySet.stream().toList());
+            Collections.reverse(temp);
+            for (pokerCardsOrder key : temp) {
                 int numVals = pokerVals.get(key);
                 if(numVals == 3){
                     handRank.firstHighVal = key;
@@ -169,15 +177,17 @@ public class pokerHand {
             handHasBeenSet = true;
 
         } else {
-            handRank.handName = pokerHands.THREE_OF_A_KIND;
             Set<pokerCardsOrder> keySet = pokerVals.descendingKeySet();
-            for (pokerCardsOrder key : keySet) {
+            List<pokerCardsOrder> temp = new ArrayList<pokerCardsOrder>(keySet.stream().toList());
+            Collections.reverse(temp);
+            for (pokerCardsOrder key : temp) {
                 int numVals = pokerVals.get(key);
                 if (numVals == 3) {
+                    handRank.handName = pokerHands.THREE_OF_A_KIND;
                     handRank.firstHighVal = key;
+                    handHasBeenSet = true;
                 }
             }
-            handHasBeenSet = true;
         }
         this.sortHandResults();
         return handHasBeenSet;
@@ -187,12 +197,22 @@ public class pokerHand {
         boolean handHasBeenSet= false;
 
         if(pokerVals.size()==2){
-            handRank.handName = pokerHands.FOUR_OF_A_KIND;
             Set<pokerCardsOrder> keySet = pokerVals.descendingKeySet();
-            for (pokerCardsOrder key : keySet) {
+            List<pokerCardsOrder> temp = new ArrayList<pokerCardsOrder>(keySet.stream().toList());
+            Collections.reverse(temp);
+            handRank.firstHighVal = pokerCardsOrder.T2;
+            for (pokerCardsOrder key : temp) {
                 int numVals = pokerVals.get(key);
+
                 if(numVals == 4){
                     handRank.firstHighVal = key;
+                    handRank.handName = pokerHands.FOUR_OF_A_KIND;
+                } else if ((numVals == 3) || (numVals == 2)){
+                    pokerCardsOrder tempKey = key;
+                    if(tempKey.ordinal() > handRank.firstHighVal.ordinal()){
+                        handRank.firstHighVal = tempKey;
+                    }
+                    handRank.handName = pokerHands.FULL_HOUSE;
                 }
             }
             handHasBeenSet = true;
@@ -211,10 +231,11 @@ public class pokerHand {
     private void checkIsHandStraight() {
         if(checkContinuousCards()){
             handRank.handName = pokerHands.STRAIGHT;
-            handRank.firstHighVal = hand.stream().toList().get(0).number;
         } else {
             handRank.handName = pokerHands.HIGH_CARD;
         }
+        handRank.firstHighVal = this.getCard(0).number;
+        handRank.secondHighVal = this.getCard(1).number;
     }
 
 

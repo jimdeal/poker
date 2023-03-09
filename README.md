@@ -36,3 +36,7 @@ High
 each number of suite processing method will set up a "hand result" class - that will store information
 about the result of the hand : hand name, 1st & 2nd High values and then the hand stored in descending
 order.
+
+TESTING
+dev testing of individual hands - to test ordering mechanism / results
+testing of hands as laid down at bottom of https://codingdojo.org/kata/PokerHands/

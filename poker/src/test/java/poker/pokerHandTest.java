@@ -390,7 +390,6 @@ class pokerHandTest {
 
         assertTrue(hand1.isCardHandFull());
         assertEquals(hand1.getNumberOfSuitsInHand(), 1);
-
         hand1.processHand();
         assertEquals(pokerHands.STRAIGHT_FLUSH, hand1.getHandResult().handName);
         assertEquals(pokerCardsOrder.S6, hand1.getHandResult().firstHighVal);
@@ -411,16 +410,13 @@ class pokerHandTest {
 
         assertTrue(hand2.isCardHandFull());
         assertEquals(hand2.getNumberOfSuitsInHand(), 1);
-
         hand2.processHand();
         assertEquals(pokerHands.FLUSH, hand2.getHandResult().handName);
         assertEquals(pokerCardsOrder.E, hand2.getHandResult().firstHighVal);
 
         pokerTwoPlayerGame game = new pokerTwoPlayerGame();
-
         pokerHandResult winner = game.scoreGame(hand1,hand2);
         assertTrue(winner.playerName.equals(hand2.getPlayerName()));
-
     }
 
     @Test
@@ -440,7 +436,6 @@ class pokerHandTest {
 
         assertTrue(hand1.isCardHandFull());
         assertEquals(hand1.getNumberOfSuitsInHand(), 1);
-
         hand1.processHand();
         assertEquals(pokerHands.FLUSH, hand1.getHandResult().handName);
         assertEquals(pokerCardsOrder.E, hand1.getHandResult().firstHighVal);
@@ -461,16 +456,13 @@ class pokerHandTest {
 
         assertTrue(hand2.isCardHandFull());
         assertEquals(hand2.getNumberOfSuitsInHand(), 1);
-
         hand2.processHand();
         assertEquals(pokerHands.STRAIGHT_FLUSH, hand2.getHandResult().handName);
         assertEquals(pokerCardsOrder.S6, hand2.getHandResult().firstHighVal);
 
         pokerTwoPlayerGame game = new pokerTwoPlayerGame();
-
         pokerHandResult winner = game.scoreGame(hand1,hand2);
         assertTrue(winner.playerName.equals(hand1.getPlayerName()));
-
     }
 
     @Test
@@ -490,7 +482,6 @@ class pokerHandTest {
 
         assertTrue(hand1.isCardHandFull());
         assertEquals(hand1.getNumberOfSuitsInHand(), 1);
-
         hand1.processHand();
         assertEquals(pokerHands.STRAIGHT_FLUSH, hand1.getHandResult().handName);
         assertEquals(pokerCardsOrder.T, hand1.getHandResult().firstHighVal);
@@ -511,22 +502,210 @@ class pokerHandTest {
 
         assertTrue(hand2.isCardHandFull());
         assertEquals(hand2.getNumberOfSuitsInHand(), 1);
-
         hand2.processHand();
         assertEquals(pokerHands.STRAIGHT_FLUSH, hand2.getHandResult().handName);
         assertEquals(pokerCardsOrder.S6, hand2.getHandResult().firstHighVal);
 
         pokerTwoPlayerGame game = new pokerTwoPlayerGame();
-
         pokerHandResult winner = game.scoreGame(hand1,hand2);
         assertTrue(winner.playerName.equals(hand1.getPlayerName()));
+    }
+
+    @Test
+    void testGameHighAce() {
+        //Black: 2H 3D 5S 9C KD  White: 2C 3H 4S 8C AH
+        pokerCard card12 = new pokerCard(pokerCardsOrder.T2, pokerSuit.HEARTS);
+        pokerCard card11 = new pokerCard(pokerCardsOrder.T3, pokerSuit.DIAMONDS);
+        pokerCard card13 = new pokerCard(pokerCardsOrder.F5, pokerSuit.SPADES);
+        pokerCard card14 = new pokerCard(pokerCardsOrder.N, pokerSuit.CLUBS);
+        pokerCard card15 = new pokerCard(pokerCardsOrder.K, pokerSuit.DIAMONDS);
+
+        pokerHand hand1 = new pokerHand("fred");
+        hand1.addCardToHand(card11);
+        hand1.addCardToHand(card12);
+        hand1.addCardToHand(card13);
+        hand1.addCardToHand(card14);
+        hand1.addCardToHand(card15);
+
+        assertTrue(hand1.isCardHandFull());
+        assertEquals(hand1.getNumberOfSuitsInHand(), 4);
+        hand1.processHand();
+        assertEquals(pokerHands.HIGH_CARD, hand1.getHandResult().handName);
+        assertEquals(pokerCardsOrder.K, hand1.getHandResult().firstHighVal);
+
+
+        //Black: 2H 3D 5S 9C KD  White: 2C 3H 4S 8C AH
+        pokerCard card24 = new pokerCard(pokerCardsOrder.T2, pokerSuit.CLUBS);
+        pokerCard card22 = new pokerCard(pokerCardsOrder.T3, pokerSuit.HEARTS);
+        pokerCard card25 = new pokerCard(pokerCardsOrder.F4, pokerSuit.SPADES);
+        pokerCard card23 = new pokerCard(pokerCardsOrder.E, pokerSuit.CLUBS);
+        pokerCard card21 = new pokerCard(pokerCardsOrder.A, pokerSuit.HEARTS);
+
+        pokerHand hand2 = new pokerHand("fred");
+        hand2.addCardToHand(card21);
+        hand2.addCardToHand(card22);
+        hand2.addCardToHand(card23);
+        hand2.addCardToHand(card24);
+        hand2.addCardToHand(card25);
+
+        assertTrue(hand2.isCardHandFull());
+        assertEquals(hand2.getNumberOfSuitsInHand(), 3);
+        hand2.processHand();
+        assertEquals(pokerHands.HIGH_CARD, hand2.getHandResult().handName);
+        assertEquals(pokerCardsOrder.A, hand2.getHandResult().firstHighVal);
+
+        pokerTwoPlayerGame game = new pokerTwoPlayerGame();
+        pokerHandResult winner = game.scoreGame(hand1,hand2);
+        assertTrue(winner.playerName.equals(hand1.getPlayerName()));
+    }
+
+    @Test
+    void testGameFullHouseOverFlush() {
+        // Black: 2H 4S 4C 2D 4H  White: 2S 8S AS QS 3S
+        pokerCard card11 = new pokerCard(pokerCardsOrder.T2, pokerSuit.HEARTS);
+        pokerCard card12 = new pokerCard(pokerCardsOrder.F4, pokerSuit.SPADES);
+        pokerCard card13 = new pokerCard(pokerCardsOrder.F4, pokerSuit.CLUBS);
+        pokerCard card14 = new pokerCard(pokerCardsOrder.T2, pokerSuit.DIAMONDS);
+        pokerCard card15 = new pokerCard(pokerCardsOrder.F4, pokerSuit.HEARTS);
+
+        pokerHand hand1 = new pokerHand("fred");
+        hand1.addCardToHand(card11);
+        hand1.addCardToHand(card12);
+        hand1.addCardToHand(card13);
+        hand1.addCardToHand(card14);
+        hand1.addCardToHand(card15);
+
+        assertTrue(hand1.isCardHandFull());
+        assertEquals(hand1.getNumberOfSuitsInHand(), 4);
+        hand1.processHand();
+        assertEquals(pokerHands.FULL_HOUSE, hand1.getHandResult().handName);
+        assertEquals(pokerCardsOrder.F4, hand1.getHandResult().firstHighVal);
+
+
+        // Black: 2H 4S 4C 2D 4H  White: 2S 8S AS QS 3S
+        pokerCard card24 = new pokerCard(pokerCardsOrder.T2, pokerSuit.SPADES);
+        pokerCard card22 = new pokerCard(pokerCardsOrder.E, pokerSuit.SPADES);
+        pokerCard card25 = new pokerCard(pokerCardsOrder.A, pokerSuit.SPADES);
+        pokerCard card23 = new pokerCard(pokerCardsOrder.Q, pokerSuit.SPADES);
+        pokerCard card21 = new pokerCard(pokerCardsOrder.T3, pokerSuit.SPADES);
+
+        pokerHand hand2 = new pokerHand("fred");
+        hand2.addCardToHand(card21);
+        hand2.addCardToHand(card22);
+        hand2.addCardToHand(card23);
+        hand2.addCardToHand(card24);
+        hand2.addCardToHand(card25);
+
+        assertTrue(hand2.isCardHandFull());
+        assertEquals(hand2.getNumberOfSuitsInHand(), 1);
+        hand2.processHand();
+        assertEquals(pokerHands.FLUSH, hand2.getHandResult().handName);
+        assertEquals(pokerCardsOrder.A, hand2.getHandResult().firstHighVal);
+
+        pokerTwoPlayerGame game = new pokerTwoPlayerGame();
+        pokerHandResult winner = game.scoreGame(hand1,hand2);
+        assertTrue(winner.playerName.equals(hand1.getPlayerName()));
+        assertTrue(winner.handName.ordinal()==pokerHands.FULL_HOUSE.ordinal());
 
     }
 
     @Test
-    void testGameFlush() {
+    void testGameHigh9() {
+        // Black: 2H 3D 5S 9C KD  White: 2C 3H 4S 8C KH
+        pokerCard card11 = new pokerCard(pokerCardsOrder.T2, pokerSuit.HEARTS);
+        pokerCard card12 = new pokerCard(pokerCardsOrder.T3, pokerSuit.DIAMONDS);
+        pokerCard card13 = new pokerCard(pokerCardsOrder.F5, pokerSuit.SPADES);
+        pokerCard card14 = new pokerCard(pokerCardsOrder.N, pokerSuit.CLUBS);
+        pokerCard card15 = new pokerCard(pokerCardsOrder.K, pokerSuit.DIAMONDS);
+
+        pokerHand hand1 = new pokerHand("fred");
+        hand1.addCardToHand(card11);
+        hand1.addCardToHand(card12);
+        hand1.addCardToHand(card13);
+        hand1.addCardToHand(card14);
+        hand1.addCardToHand(card15);
+
+        assertTrue(hand1.isCardHandFull());
+        assertEquals(hand1.getNumberOfSuitsInHand(), 4);
+        hand1.processHand();
+        assertEquals(pokerHands.HIGH_CARD, hand1.getHandResult().handName);
+        assertEquals(pokerCardsOrder.K, hand1.getHandResult().firstHighVal);
+
+
+        // Black: 2H 3D 5S 9C KD  White: 2C 3H 4S 8C KH
+        pokerCard card24 = new pokerCard(pokerCardsOrder.T2, pokerSuit.CLUBS);
+        pokerCard card22 = new pokerCard(pokerCardsOrder.T3, pokerSuit.HEARTS);
+        pokerCard card25 = new pokerCard(pokerCardsOrder.F4, pokerSuit.SPADES);
+        pokerCard card23 = new pokerCard(pokerCardsOrder.E, pokerSuit.CLUBS);
+        pokerCard card21 = new pokerCard(pokerCardsOrder.K, pokerSuit.HEARTS);
+
+        pokerHand hand2 = new pokerHand("fred");
+        hand2.addCardToHand(card21);
+        hand2.addCardToHand(card22);
+        hand2.addCardToHand(card23);
+        hand2.addCardToHand(card24);
+        hand2.addCardToHand(card25);
+
+        assertTrue(hand2.isCardHandFull());
+        assertEquals(hand2.getNumberOfSuitsInHand(), 3);
+        hand2.processHand();
+        assertEquals(pokerHands.HIGH_CARD, hand2.getHandResult().handName);
+        assertEquals(pokerCardsOrder.K, hand2.getHandResult().firstHighVal);
+
+        pokerTwoPlayerGame game = new pokerTwoPlayerGame();
+        pokerHandResult winner = game.scoreGame(hand1,hand2);
+        assertTrue(winner.playerName.equals(hand1.getPlayerName()));
+        assertTrue(winner.firstHighVal.ordinal() == pokerCardsOrder.K.ordinal());
+        assertTrue(winner.secondHighVal.ordinal() == pokerCardsOrder.N.ordinal());
+
     }
 
+    @Test
+    void testGameTie() {
+        // Black: 2H 3D 5S 9C KD  White: 2D 3H 5C 9S KH
+        pokerCard card11 = new pokerCard(pokerCardsOrder.T2, pokerSuit.HEARTS);
+        pokerCard card12 = new pokerCard(pokerCardsOrder.T3, pokerSuit.DIAMONDS);
+        pokerCard card13 = new pokerCard(pokerCardsOrder.F5, pokerSuit.SPADES);
+        pokerCard card14 = new pokerCard(pokerCardsOrder.N, pokerSuit.CLUBS);
+        pokerCard card15 = new pokerCard(pokerCardsOrder.K, pokerSuit.DIAMONDS);
 
+        pokerHand hand1 = new pokerHand("fred");
+        hand1.addCardToHand(card11);
+        hand1.addCardToHand(card12);
+        hand1.addCardToHand(card13);
+        hand1.addCardToHand(card14);
+        hand1.addCardToHand(card15);
+
+        assertTrue(hand1.isCardHandFull());
+        assertEquals(hand1.getNumberOfSuitsInHand(), 4);
+        hand1.processHand();
+        assertEquals(pokerHands.HIGH_CARD, hand1.getHandResult().handName);
+        assertEquals(pokerCardsOrder.K, hand1.getHandResult().firstHighVal);
+
+
+        // Black: Black: 2H 3D 5S 9C KD  White: 2D 3H 5C 9S KH
+        pokerCard card24 = new pokerCard(pokerCardsOrder.T2, pokerSuit.DIAMONDS);
+        pokerCard card22 = new pokerCard(pokerCardsOrder.T3, pokerSuit.HEARTS);
+        pokerCard card25 = new pokerCard(pokerCardsOrder.F5, pokerSuit.CLUBS);
+        pokerCard card23 = new pokerCard(pokerCardsOrder.N, pokerSuit.SPADES);
+        pokerCard card21 = new pokerCard(pokerCardsOrder.K, pokerSuit.HEARTS);
+
+        pokerHand hand2 = new pokerHand("fred");
+        hand2.addCardToHand(card21);
+        hand2.addCardToHand(card22);
+        hand2.addCardToHand(card23);
+        hand2.addCardToHand(card24);
+        hand2.addCardToHand(card25);
+
+        assertTrue(hand2.isCardHandFull());
+        assertEquals(hand2.getNumberOfSuitsInHand(), 4);
+        hand2.processHand();
+        assertEquals(pokerHands.HIGH_CARD, hand2.getHandResult().handName);
+        assertEquals(pokerCardsOrder.K, hand2.getHandResult().firstHighVal);
+
+        pokerTwoPlayerGame game = new pokerTwoPlayerGame();
+        pokerHandResult winner = game.scoreGame(hand1,hand2);
+        assertTrue(winner.playerName==null);
+    }
 
 }

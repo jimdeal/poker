@@ -46,13 +46,17 @@ public class pokerTwoPlayerGame {
 
     private pokerHandResult processRemain(pokerHand hand1, pokerHand hand2){
         pokerHandResult winner = new pokerHandResult();
-        if(hand1.getHandResult().remainingValue[0].ordinal() > hand2.getHandResult().remainingValue[0].ordinal()){
-            winner = hand1.getHandResult();
-        } else if (hand1.getHandResult().remainingValue[0].ordinal() < hand2.getHandResult().remainingValue[0].ordinal()){
-            winner = hand2.getHandResult();
-        }else{
 
+        for(int c = 0; c < 4; c++){
+            if(hand1.getHandResult().remainingValue[0].ordinal() > hand2.getHandResult().remainingValue[0].ordinal()){
+                winner = hand1.getHandResult();
+            } else if (hand1.getHandResult().remainingValue[0].ordinal() < hand2.getHandResult().remainingValue[0].ordinal()){
+                winner = hand2.getHandResult();
+            }else{
+                // tie
+            }
         }
+
         return winner;
     }
 
